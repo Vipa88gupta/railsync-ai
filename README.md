@@ -3,6 +3,8 @@
 > **Automatic Block Planning & Multi-Department Coordination System for Indian Railways**  
 > *Decision-Support System for Chief Section Controllers (Kanpur Division)*
 
+👉 **[🌐 View Live Dashboard Demo](https://vipa88gupta.github.io/railsync-ai/)**
+
 ---
 
 ## 📌 Overview
