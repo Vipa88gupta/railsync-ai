@@ -45,3 +45,10 @@ Double-click `index.html` or `run.bat` to launch directly in any web browser.
 python -m http.server 8000
 ```
 Open [http://localhost:8000](http://localhost:8000) in your browser.
+
+---
+
+## 👥 Contributors & Team
+
+- **Anushka Gupta** ([@vipa88gupta](https://github.com/vipa88gupta))
+
