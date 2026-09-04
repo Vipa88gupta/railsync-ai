@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RailSync AI - Section Controller Operations Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       PROMINENT CENTERED HEADER: RAILSYNC AI
+       ======================================================================== -->
+  <header class="top-nav">
+    <div class="nav-center-container">
+      <div class="brand-badge-center">
+        <div class="brand-icon-lg">🚆</div>
+        <h1 class="brand-title-lg">RailSync AI</h1>
+      </div>
+      <p class="brand-subtitle-lg">Chief Section Controller Operations Desk &bull; Automatic Block Planning & System Integration</p>
+
+      <div class="header-tags-row">
+        <div class="section-tag">📍 NCR Kanpur Division &bull; Ghaziabad to Kanpur Section (Track 1)</div>
+        <div class="live-tag">
+          <span class="live-dot"></span>
+          <span>5 Systems Connected (TMS &bull; SMMS &bull; TDMS &bull; COA &bull; BDMS)</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       MAIN OPERATIONAL CONTENT (Wide Layout, High Contrast, Distinct Section Colors)
+       ======================================================================== -->
+  <main class="main-container">
+
+    <!-- 4 Summary Metric Cards -->
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="m-label">Pending Repairs</div>
+        <div class="m-value">4 Requests</div>
+        <div class="m-sub">Track: 2 &bull; Electrical: 1 &bull; Signals: 1</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="m-label">High Urgency</div>
+        <div class="m-value" style="color: #b91c1c;">2 Requests</div>
+        <div class="m-sub">Safety critical track issues</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="m-label">Planned Block Window</div>
+        <div class="m-value" style="color: #92400e;">01:30 &ndash; 04:00 AM</div>
+        <div class="m-sub">150 Minutes scheduled</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="m-label">Timetable Conflict</div>
+        <div class="m-value" style="color: #15803d;">0 Min Delay</div>
+        <div class="m-sub">Passenger trains on time</div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         SECTION 1: BLUE THEME - Active Maintenance Requests
+         ==================================================================== -->
+    <section class="section-blue">
+      <div class="section-blue-header">
+        <div>
+          <div class="section-blue-title">
+            <span>📋</span> 1. Active Maintenance Requests
+          </div>
+          <div style="font-size: 11.5px; color: #1d4ed8; margin-top: 2px;">
+            Incoming repairs from Track (TMS), Signals (SMMS), and Electrical (TDMS)
+          </div>
+        </div>
+      </div>
+
+      <div class="section-body">
+        <div style="overflow-x: auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Request ID</th>
+                <th>Department</th>
+                <th>Problem & Location</th>
+                <th>Urgency</th>
+                <th>Priority Score</th>
+                <th>Time Needed</th>
+                <th>Scheduled Slot</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="requestsTableBody">
+              <!-- Rendered dynamically by app.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 2: AMBER THEME - Corridor Schedule & Track Block (Crystal Clear)
+         ==================================================================== -->
+    <section class="section-amber">
+      <div class="section-amber-header">
+        <div>
+          <div class="section-amber-title">
+            <span>⚡</span> 2. Corridor Schedule & Track Maintenance Slot (Track 1 Down Line)
+          </div>
+          <div style="font-size: 11.5px; color: #b45309; margin-top: 2px;">
+            Matching live train timetable with maintenance team quiet windows
+          </div>
+        </div>
+
+        <button class="btn-simulate" id="btnSimulateDelay" onclick="toggleTrainDelay()">
+          ⏱️ Simulate 45m Delay on Vande Bharat
+        </button>
+      </div>
+
+      <div class="section-body">
+
+        <!-- 2-Column Split: Timetable vs Maintenance Tasks -->
+        <div id="corridorGridBody">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+
+        <!-- Wide Track Timeline Visual -->
+        <div class="track-lane-wrapper">
+          <div class="track-hours">
+            <span>00:00 (Midnight)</span>
+            <span>02:00 AM</span>
+            <span>04:00 AM</span>
+            <span>06:00 AM</span>
+            <span>08:00 AM</span>
+          </div>
+
+          <div class="track-bar">
+            <!-- Freight Train -->
+            <div class="slot-item train-freight" style="left: 2%; width: 14%;">
+              🚆 Freight Coal Rake
+            </div>
+
+            <!-- Maintenance Block Slot -->
+            <div class="slot-item maintenance-block" id="trackBlockBar" style="left: 20%; width: 30%;">
+              <!-- Rendered dynamically by app.js -->
+            </div>
+
+            <!-- Vande Bharat Express -->
+            <div class="slot-item train-passenger" style="left: 70%; width: 15%;">
+              ⚡ Vande Bharat Express
+            </div>
+          </div>
+        </div>
+
+        <div id="delayAlertNote" class="delay-alert-box" style="display: none;"></div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 3: GREEN THEME - Controller Block Sanction (Accept / Reject)
+         ==================================================================== -->
+    <section class="section-green">
+      <div class="section-green-header">
+        <div>
+          <div class="section-green-title">
+            <span>👨‍✈️</span> 3. Controller Block Sanction Desk
+          </div>
+          <div style="font-size: 11.5px; color: #15803d; margin-top: 2px;">
+            Chief Section Controller Final Decision &bull; Export to BDMS
+          </div>
+        </div>
+
+        <span class="badge-dept" style="background:#ecfdf5; color:#15803d; border-color:#86efac;">
+          BDMS DESK
+        </span>
+      </div>
+
+      <div class="section-body" id="controllerDeskBody">
+        <!-- Rendered dynamically by app.js (Accept vs Reject) -->
+      </div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

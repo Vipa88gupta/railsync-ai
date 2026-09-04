@@ -1,0 +1,3 @@
+@echo off
+echo Opening RailSync AI Dashboard...
+start http://localhost:8000

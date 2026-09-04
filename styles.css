@@ -1,0 +1,579 @@
+/* ==============================================================================
+   RailSync AI - Section Controller Operations Dashboard
+   High Contrast, Prominent Centered Header, Color-Coded Clear Sections
+   ============================================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: #f1f5f9;
+  color: #0f172a;
+  font-size: 13.5px;
+  line-height: 1.55;
+  padding-bottom: 40px;
+}
+
+/* ==============================================================================
+   PROMINENT CENTERED HEADER: RAILSYNC AI
+   ============================================================================== */
+.top-nav {
+  background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+  color: #ffffff;
+  padding: 20px 24px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  border-bottom: 3px solid #3b82f6;
+}
+
+.nav-center-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-badge-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.brand-icon-lg {
+  width: 46px;
+  height: 46px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: inset 0 1px 3px rgba(255,255,255,0.2);
+}
+
+.brand-title-lg {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.brand-subtitle-lg {
+  font-size: 12.5px;
+  color: #93c5fd;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.header-tags-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+.section-tag {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  color: #e2e8f0;
+  font-weight: 600;
+}
+
+.live-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(34, 197, 94, 0.2);
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #86efac;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  background: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #22c55e;
+}
+
+/* ==============================================================================
+   PAGE CONTAINER & SUMMARY CARDS
+   ============================================================================== */
+.main-container {
+  max-width: 1260px;
+  margin: 20px auto 0;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 900px) {
+  .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.metric-card {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 14px 18px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.m-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.m-value {
+  font-size: 19px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-top: 4px;
+}
+
+.m-sub {
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+/* ==============================================================================
+   SECTION 1: BLUE COLOR THEME - ACTIVE MAINTENANCE REQUESTS
+   ============================================================================== */
+.section-blue {
+  background: #ffffff;
+  border: 2px solid #93c5fd;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(37, 99, 235, 0.06);
+}
+
+.section-blue-header {
+  background: #dbeafe;
+  border-bottom: 2px solid #bfdbfe;
+  padding: 14px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-blue-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #1e3a8a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-body {
+  padding: 18px 22px;
+}
+
+/* Table */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.data-table th {
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 700;
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 2px solid #cbd5e1;
+  font-size: 11.5px;
+  text-transform: uppercase;
+}
+
+.data-table td {
+  padding: 13px 14px;
+  border-bottom: 1px solid #e2e8f0;
+  vertical-align: middle;
+}
+
+.data-table tr:hover {
+  background: #f8fafc;
+}
+
+/* Badges */
+.badge-dept {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid;
+  display: inline-block;
+}
+
+.dept-tms { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
+.dept-smms { background: #fffbeb; color: #b45309; border-color: #fde68a; }
+.dept-tdms { background: #faf5ff; color: #7e22ce; border-color: #e9d5ff; }
+
+.badge-urgency {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.urg-high { background: #fee2e2; color: #991c1c; border: 1px solid #fca5a5; }
+.urg-medium { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+.urg-low { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
+
+.status-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.st-scheduled { background: #f3e8ff; color: #6b21a8; border: 1px solid #d8b4fe; }
+.st-approved { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+.st-planned { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+
+/* ==============================================================================
+   SECTION 2: AMBER COLOR THEME - CORRIDOR TIMETABLE & MAINTENANCE MATCHING
+   ============================================================================== */
+.section-amber {
+  background: #ffffff;
+  border: 2px solid #fcd34d;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(217, 119, 6, 0.06);
+}
+
+.section-amber-header {
+  background: #fef3c7;
+  border-bottom: 2px solid #fde68a;
+  padding: 14px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.section-amber-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #92400e;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-simulate {
+  background: #ffffff;
+  border: 1.5px solid #d97706;
+  color: #92400e;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 7px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-simulate:hover {
+  background: #fef3c7;
+}
+
+/* 2-Column Split Layout for Section 2 */
+.corridor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 860px) {
+  .corridor-grid { grid-template-columns: 1fr; }
+}
+
+.corridor-subcard {
+  background: #fafaf9;
+  border: 1px solid #e7e5e4;
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.subcard-head {
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #78350f;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #fde68a;
+}
+
+.train-item-row {
+  background: #ffffff;
+  border: 1px solid #e7e5e4;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.train-gap-highlight {
+  background: #f0fdf4;
+  border: 1.5px solid #86efac;
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #166534;
+}
+
+.work-item-row {
+  background: #ffffff;
+  border: 1px solid #e7e5e4;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+/* Horizontal Track Bar Visual */
+.track-lane-wrapper {
+  background: #fafaf9;
+  border: 1px solid #e7e5e4;
+  border-radius: 8px;
+  padding: 14px 18px;
+}
+
+.track-hours {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 700;
+  color: #78716c;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed #d6d3d1;
+  margin-bottom: 10px;
+}
+
+.track-bar {
+  position: relative;
+  height: 44px;
+  background: #e7e5e4;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.slot-item {
+  position: absolute;
+  top: 5px;
+  height: 34px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.train-freight { background: #44403c; color: #ffffff; }
+.train-passenger { background: #0284c7; color: #ffffff; }
+
+.maintenance-block {
+  background: #fef08a;
+  border: 2px solid #d97706;
+  color: #92400e;
+  font-weight: 800;
+  z-index: 5;
+  justify-content: space-between;
+}
+
+.delay-alert-box {
+  background: #fffbeb;
+  border: 1.5px solid #fde68a;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 12.5px;
+  color: #92400e;
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
+/* ==============================================================================
+   SECTION 3: GREEN COLOR THEME - CONTROLLER BLOCK SANCTION (ACCEPT / REJECT)
+   ============================================================================== */
+.section-green {
+  background: #ffffff;
+  border: 2px solid #86efac;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(5, 150, 105, 0.06);
+}
+
+.section-green-header {
+  background: #dcfce7;
+  border-bottom: 2px solid #bbf7d0;
+  padding: 14px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-green-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #14532d;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.parameters-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 900px) {
+  .parameters-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.p-label {
+  font-size: 11px;
+  color: #15803d;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.p-value {
+  font-size: 14px;
+  font-weight: 800;
+  color: #064e3b;
+  margin-top: 2px;
+}
+
+/* ACCEPT & REJECT BUTTONS */
+.buttons-row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 600px) {
+  .buttons-row { grid-template-columns: 1fr; }
+}
+
+.btn-accept {
+  background: #16a34a;
+  color: #ffffff;
+  border: none;
+  padding: 13px 20px;
+  font-size: 14px;
+  font-weight: 800;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 2px 4px rgba(22, 163, 74, 0.25);
+  transition: all 0.15s;
+}
+
+.btn-accept:hover {
+  background: #15803d;
+}
+
+.btn-reject {
+  background: #ffffff;
+  color: #dc2626;
+  border: 2px solid #f87171;
+  padding: 13px 20px;
+  font-size: 14px;
+  font-weight: 800;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.15s;
+}
+
+.btn-reject:hover {
+  background: #fef2f2;
+  border-color: #ef4444;
+}
+
+/* Output Slips */
+.permit-slip {
+  background: #ffffff;
+  border: 1.5px solid #86efac;
+  border-radius: 8px;
+  padding: 16px 18px;
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+  color: #14532d;
+  line-height: 1.55;
+}
+
+.reject-slip {
+  background: #ffffff;
+  border: 1.5px solid #fca5a5;
+  border-radius: 8px;
+  padding: 16px 18px;
+  font-size: 12.5px;
+  color: #991c1c;
+  line-height: 1.55;
+}
